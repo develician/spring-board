@@ -321,6 +321,7 @@
                 <li><a href="/board/listAll"><i class="fa fa-circle-o"></i> 게시판 v1</a></li>
                 <li><a href="/board/listCriteria"><i class="fa fa-circle-o"></i> 게시판 v2</a></li>
                  <li><a href="/board/listPage"><i class="fa fa-circle-o"></i> 게시판 v3</a></li>
+                 <li><a href="/sboard/list"><i class="fa fa-circle-o"></i> 검색 게시판 v1</a></li>
               </ul>
             </li>
             <li class="treeview">
