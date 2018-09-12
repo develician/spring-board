@@ -84,29 +84,29 @@ public class PageMaker {
 		prev = startPage == 1 ? false : true;
 		next = endPage * cri.getPage() >= totalCount ? false : true;
 	}
-	
-	
+
+	public String makeQuery(int page) {
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
+				.queryParam("perPageNum", cri.getPerPageNum()).build();
+
+		return uriComponents.toString();
+	}
+
 	public String makeSearch(int page) {
-		UriComponents uriComponents = UriComponentsBuilder.newInstance()
-				.queryParam("page", page)
+		UriComponents uriComponents = UriComponentsBuilder.newInstance().queryParam("page", page)
 				.queryParam("perPageNum", cri.getPerPageNum())
 				.queryParam("searchType", ((SearchCriteria) cri).getSearchType())
-				.queryParam("keyword", encoding(((SearchCriteria) cri).getKeyword()))
-				.build();
-		
-		System.out.println(uriComponents.toUriString());
-		
+				.queryParam("keyword", encoding(((SearchCriteria) cri).getKeyword())).build();
+
 		return uriComponents.toUriString();
-		
-		
+
 	}
-	
 
 	public String encoding(String keyword) {
-		if(keyword == null || keyword.trim().length() == 0) {
+		if (keyword == null || keyword.trim().length() == 0) {
 			return "";
 		}
-		
+
 		try {
 			return URLEncoder.encode(keyword, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
@@ -115,24 +115,5 @@ public class PageMaker {
 			return "";
 		}
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

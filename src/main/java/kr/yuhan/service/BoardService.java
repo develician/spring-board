@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.yuhan.domain.BoardVO;
 import kr.yuhan.domain.Criteria;
+import kr.yuhan.domain.SearchCriteria;
 
 public interface BoardService {
 	
@@ -14,4 +15,7 @@ public interface BoardService {
 	public List<BoardVO> listAll();
 	public List<BoardVO> listCriteria(Criteria cri);
 	public int totalCount(Criteria cri);
+	
+	public List<BoardVO> listSearchCriteria(SearchCriteria cri);
+	public int listSearchCount(SearchCriteria cri);
 }

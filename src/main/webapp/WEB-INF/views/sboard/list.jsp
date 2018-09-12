@@ -14,35 +14,54 @@
 	} else if (result == "update") {
 		alert("정상적으로 글이 수정되었습니다.");
 	}
+
+	$(document).ready(
+			function() {
+				$('#searchBtn').on(
+						'click',
+						function(e) {
+							window.location = 'list'
+									+ '${maker.makeQuery(1)}'
+									+ '&searchType='
+									+ $("select option:selected").val()
+									+ "&keyword="
+									+ encodeURIComponent($('#keywordInput')
+											.val());
+						});
+
+				$('#newBtn').on('click', function(e) {
+					window.location = 'register'
+				});
+			});
 </script>
 
 
 <div class="col-md-12">
 	<div class="box-body">
 		<select name="searchType">
-			<option value="n" <c:out value="${ cri.searchType == null ? 'selected' : ''}" />>
-				====
-			</option>
-			<option value="t" <c:out value="${ cri.searchType eq 't' ? 'selected' : ''}" />>
-				Title
-			</option>
-			<option value="c" <c:out value="${ cri.searchType eq 'c' ? 'selected' : ''}" />>
-				Content
-			</option>
-			<option value="w" <c:out value="${ cri.searchType eq 'w' ? 'selected' : ''}" />>
-				Write
-			</option>
-			<option value="tc" <c:out value="${ cri.searchType eq 'tc' ? 'selected' : ''}" />>
-				Title or Content
-			</option>
-			<option value="cw" <c:out value="${ cri.searchType eq 'cw' ? 'selected' : ''}" />>
-				Content or Writer
-			</option>
-			<option value="tcw" <c:out value="${ cri.searchType eq 'tcw' ? 'selected' : ''}" />>
-				Title or Content or Writer
-			</option>
-		</select>
-		<input type="text" name="keyword" id="keywordInput" value="${ cri.keyword }" />
+			<option value="n"
+				<c:out value="${ cri.searchType == null ? 'selected' : ''}" />>
+				====</option>
+			<option value="t"
+				<c:out value="${ cri.searchType eq 't' ? 'selected' : ''}" />>
+				Title</option>
+			<option value="c"
+				<c:out value="${ cri.searchType eq 'c' ? 'selected' : ''}" />>
+				Content</option>
+			<option value="w"
+				<c:out value="${ cri.searchType eq 'w' ? 'selected' : ''}" />>
+				Write</option>
+			<option value="tc"
+				<c:out value="${ cri.searchType eq 'tc' ? 'selected' : ''}" />>
+				Title or Content</option>
+			<option value="cw"
+				<c:out value="${ cri.searchType eq 'cw' ? 'selected' : ''}" />>
+				Content or Writer</option>
+			<option value="tcw"
+				<c:out value="${ cri.searchType eq 'tcw' ? 'selected' : ''}" />>
+				Title or Content or Writer</option>
+		</select> <input type="text" name="keyword" id="keywordInput"
+			value="${ cri.keyword }" />
 		<button id="searchBtn">Search</button>
 		<button id="newBtn">New Board</button>
 	</div>
@@ -62,7 +81,8 @@
 			<c:forEach items="${list }" var="vo">
 				<tr>
 					<td>${vo.bno }</td>
-					<td><a href="/sboard/read${ maker.makeSearch(maker.cri.page) }&bno=${vo.bno }">${vo.title }</td>
+					<td><a
+						href="/sboard/read${ maker.makeSearch(maker.cri.page) }&bno=${vo.bno }">${vo.title }</td>
 					<td>${vo.writer}</td>
 					<td><fmt:formatDate value="${vo.regdate }"
 							pattern="yyyy-MM-dd HH:mm" /></td>
@@ -71,7 +91,7 @@
 			</c:forEach>
 		</table>
 	</div>
-	
+
 </div>
 
 <div class="text-center">

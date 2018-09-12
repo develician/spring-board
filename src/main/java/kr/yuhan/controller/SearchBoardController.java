@@ -24,11 +24,16 @@ public class SearchBoardController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri") SearchCriteria cri, Model model) {
-		model.addAttribute("list", service.listCriteria(cri));
+//		model.addAttribute("list", service.listCriteria(cri));
+		
+		model.addAttribute("list", service.listSearchCriteria(cri));
+		
 		PageMaker maker = new PageMaker();
 		maker.setCri(cri);
-		maker.setTotalCount(service.totalCount(cri));
-
+//		maker.setTotalCount(service.totalCount(cri));
+		maker.setTotalCount(service.listSearchCount(cri));
 		model.addAttribute("maker", maker);
+
+		
 	}
 }
