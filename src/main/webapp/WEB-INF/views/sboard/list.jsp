@@ -30,7 +30,7 @@
 						});
 
 				$('#newBtn').on('click', function(e) {
-					window.location = 'register'
+					window.location = 'regist';
 				});
 			});
 </script>

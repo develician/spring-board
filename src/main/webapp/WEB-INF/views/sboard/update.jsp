@@ -3,7 +3,12 @@
 	pageEncoding="UTF-8"%>
 
 
-<form action="/board/update" method="post">
+<form action="update" method="post">
+<input type="hidden" name="bno" value="${vo.bno}"> <input
+		type="hidden" name="page" value="${cri.page}" /> <input type="hidden"
+		name="perPageNum" value="${cri.perPageNum}" /> <input type="hidden"
+		name="searchType" value="${cri.searchType}" /> <input type="hidden"
+		name="keyword" value="${cri.keyword}" />
 	<div class="col-md-12">
 		<div class="box">
 			<div class="box-body">
@@ -40,7 +45,7 @@
 			frm.submit();
 		});
 		$(".btn-primary").on("click",function(){
-			self.location="/board/listAll";
+			self.location="/board/list?page=${cri.page}&perPageNum=${cri.perPageNum}&searchType=${cri.searchType}&keyword=${cri.keyword}";
 		});
 	});
 </script>

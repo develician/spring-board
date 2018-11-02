@@ -4,7 +4,11 @@
 
 
 <form role="form" method="post">
-	<input type="hidden" name="bno" value="${vo.bno}">
+	<input type="hidden" name="bno" value="${vo.bno}"> <input
+		type="hidden" name="page" value="${cri.page}" /> <input type="hidden"
+		name="perPageNum" value="${cri.perPageNum}" /> <input type="hidden"
+		name="searchType" value="${cri.searchType}" /> <input type="hidden"
+		name="keyword" value="${cri.keyword}" />
 </form>
 <script>
 	$(document).ready(function() {
@@ -12,16 +16,18 @@
 		console.log(frm);
 
 		$(".btn-warning").on("click", function() {
-			frm.attr("action","/board/update"); //속성추가
-			frm.attr("method","get");
+			frm.attr("action", "/sboard/update"); //속성추가
+			frm.attr("method", "get");
 			frm.submit();
 		});
 		$(".btn-danger").on("click", function() {
-			frm.attr("action","/board/delete");
+			frm.attr("action", "/sboard/delete");
 			frm.submit();
 		});
 		$(".btn-primary").on("click", function() {
-			self.location="/board/listAll";
+			frm.attr("method", "get");
+			frm.attr("action", "/sboard/list");
+			frm.submit();
 		});
 	});
 </script>
@@ -30,7 +36,8 @@
 		<div class="box-body">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Title</label> <input type="text"
-					name="title" class="form-control" value="${vo.title}" readonly="readonly">
+					name="title" class="form-control" value="${vo.title}"
+					readonly="readonly">
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Content</label>

@@ -3,7 +3,7 @@
 	pageEncoding="UTF-8"%>
 
 
-<form action="/board/regist" method="post">
+<form action="/sboard/regist" method="post">
 	<div class="col-md-12">
 		<div class="box">
 			<div class="box-body">
